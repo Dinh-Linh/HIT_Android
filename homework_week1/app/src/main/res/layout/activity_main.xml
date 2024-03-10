@@ -84,7 +84,9 @@
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:progress="40" />
+            android:progress="40"
+            android:thumb="@drawable/seekbar_thumb"
+            android:progressDrawable="@drawable/seekbar_process"/>
 
     </RelativeLayout>
 
