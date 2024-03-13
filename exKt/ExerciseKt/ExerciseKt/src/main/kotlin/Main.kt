@@ -31,23 +31,42 @@ fun main(args: Array<String>) {
 
     var  cntPw = 1
     while (true){
-        println("Mời bạn nhập mật khẩu đăng nhập, lần thứ $cntPw/5")
         var pw:String?
         pw = readln()
-        if(pw.equals(password)){
+        /*if(pw.equals(password)){
             println("Đăng nhập thành công")
             break
         }
         else{
             cntPw++
             if(cntPw > 5){
-                println("Bạn đã nhập mật khẩu sai  quá 5  lần. Account was locked")
+                println("Bạn đã nhập mật khẩu sai  quá 5  lần. Account was be locked")
                 break
             }
+        }*/
+        if (password != null) {
+            checkYourPassword(password, pw)
         }
     }
 }
 
-fun checkYourPassword(password:String){
-
+fun checkYourPassword(password:String, pw:String){
+    var cntPw = 0;
+    println("Mời bạn nhập mật khẩu đăng nhập, lần thứ $cntPw/5")
+    while (pw != null){
+        if(pw.equals(password)){
+            println("Successful")
+            break
+        }
+        else{
+            if (cntPw >= 5){
+                println("Account was be locked")
+                break
+            }
+            else{
+                cntPw++
+                print("Password is not correct")
+            }
+        }
+    }
 }
