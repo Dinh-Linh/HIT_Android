@@ -4,4 +4,8 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+    <style name="colorPrimary.">light_green</style>
+    <style name="ScreenBackground"><item name="android:background">@color/light_green</item></style>
+    <style name="CardBackground"><item name="android:background">@color/light_green</item></style>
+    <style name="TextColor"><item name="android:name">@color/white</item></style>
 </resources>
