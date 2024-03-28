@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.tablelayoutTest"
+    namespace = "com.example.homewor_week4"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.tablelayoutTest"
+        applicationId = "com.example.homework_week4"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -32,6 +32,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    buildFeatures{
+        viewBinding = true
     }
 }
 

@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
         password = readLine();
         if(password != null){
             if(password.length <= 5){
-                println("Password must be greater  than  6 letters")
+                println("Password must be greater than 6 letters")
             }
             else{
                 for (i in password){

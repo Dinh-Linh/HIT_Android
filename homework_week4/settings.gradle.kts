@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "tableLayoutTest"
+rootProject.name = "homework_week4"
 include(":app")
  
