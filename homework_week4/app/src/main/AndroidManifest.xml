@@ -29,6 +29,10 @@
         <activity
             android:name=".Home"
             android:exported="false" />
+
+        <activity
+            android:name=".ItemUser"
+            android:exported="false" />
     </application>
 
 </manifest>
