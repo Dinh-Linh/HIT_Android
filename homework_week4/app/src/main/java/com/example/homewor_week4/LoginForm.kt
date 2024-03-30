@@ -13,14 +13,12 @@ class LoginForm : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val intent = Intent(this, Home::class.java)
-        val username = binding.username.text.toString()
-        val address = binding.password.text.toString()
-        val user = User(username, 19, address, R.drawable.user_alt_light)
-       //intent.putExtra("username", username)
-        //intent.putExtra("address", address)
-        intent.putExtra("user",user.toString())
         binding.login.setOnClickListener{
-            startActivity(Intent(this, Home::class.java))
+            val username = binding.username.text.toString()
+            val pass = binding.password.text.toString()
+            intent.putExtra("username", username)
+            intent.putExtra("pass", pass)
+            startActivity(intent)
         }
 
         binding.signUp.setOnClickListener{

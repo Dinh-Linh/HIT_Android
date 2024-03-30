@@ -24,9 +24,8 @@ class UserAdapter(val userList: MutableList<User>) :
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: UserAdapter.UserViewHolder, position: Int) {
         holder.textViewUsername.text = userList[position].name
-        holder.textViewAddress.text = userList[position].address
+        holder.textViewAddress.text = userList[position].pass
         holder.img.setImageResource(userList[position].image)
-
     }
 
     override fun getItemCount(): Int = userList.size

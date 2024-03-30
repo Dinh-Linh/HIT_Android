@@ -16,14 +16,22 @@ class SignUp : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val color = ContextCompat.getColor(this, R.color.blue)
+        val intent1 = Intent(this, Home::class.java)
+
         binding.signUp.setOnClickListener{
             if (checkPassword() == false){
                 binding.incorrectPassword.setText("Mật khẩu không trùng khớp")
             }
             else{
                 binding.incorrectPassword.setText("Mật khẩu trùng khớp")
+                if (checkPasswordCorrect()){
+                    val username = binding.username.text.toString()
+                    val pass = binding.password.text.toString()
+                    intent1.putExtra("username", username)
+                    intent1.putExtra("pass", pass)
+                    startActivity(intent1)
+                }
             }
-            checkPasswordCorrect()
         }
 
         binding.login.setOnClickListener{
@@ -70,7 +78,9 @@ class SignUp : AppCompatActivity() {
                     changeTextColor(binding.check22, Color.BLUE)
                     changeImgColor(binding.check21, Color.BLUE)
                 }
-                return true
+                if (c*n > 0 && pass.any({it.isUpperCase()}) && pass.any({it.isLowerCase()})){
+                    return true
+                }
             }
         }
         return false
