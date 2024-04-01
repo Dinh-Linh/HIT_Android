@@ -26,6 +26,10 @@ class UserAdapter(val userList: MutableList<User>) :
         holder.textViewUsername.text = userList[position].name
         holder.textViewAddress.text = userList[position].pass
         holder.img.setImageResource(userList[position].image)
+        holder.img.setOnClickListener{
+            userList.removeAt(position)
+            notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount(): Int = userList.size

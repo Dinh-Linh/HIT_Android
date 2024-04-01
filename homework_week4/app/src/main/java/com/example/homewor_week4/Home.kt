@@ -9,7 +9,7 @@ class Home : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var name: String
     private lateinit var pass: String
-    private val list = mutableListOf<User>()
+    private val list = DataUser.userList
     private lateinit var userAdapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +20,6 @@ class Home : AppCompatActivity() {
         name = intent.getStringExtra("username").toString()
         pass = intent.getStringExtra("pass").toString()
 
-        //list.add(User(name, pass, R.drawable.user_alt_light))
         userAdapter = UserAdapter(list)
         binding.recylerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -30,7 +29,6 @@ class Home : AppCompatActivity() {
 
     private fun addUserToList(username: String, password: String) {
         val newUser = User(username, password, R.drawable.user_alt_light)
-        list.add(newUser)
-        userAdapter.notifyItemInserted(list.size - 1)
+        DataUser.userList.add(newUser)
     }
 }

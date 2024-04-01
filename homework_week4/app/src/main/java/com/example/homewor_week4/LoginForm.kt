@@ -17,9 +17,6 @@ class LoginForm : AppCompatActivity() {
         binding.login.setOnClickListener{
             val username = binding.username.text.toString()
             val pass = binding.password.text.toString()
-            //intent.putExtra("username", username)
-            //intent.putExtra("pass", pass)
-            //list.add(User(username, pass, R.layout.itemuser))
             navigateToHome(username, pass)
         }
 
@@ -31,7 +28,7 @@ class LoginForm : AppCompatActivity() {
     private fun navigateToHome(username: String, password: String) {
         val intent = Intent(this, Home::class.java)
         intent.putExtra("username", username)
-        intent.putExtra("password", password)
+        intent.putExtra("pass", password)
         startActivity(intent)
     }
 }
