@@ -37,6 +37,11 @@ class ProfileFragment : Fragment() {
         Glide.with(view.context).load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP9sS46s10n9BQM_ghd4yYsHULiuxZU6cW7bZVoJyNug&s").into(view.findViewById(R.id.img7))
 
         Glide.with(view.context).load("https://cdn.vn.alongwalk.info/vn/wp-content/uploads/2023/02/15170250/image-top-100-anh-gai-xinh-tik-tok-cute-dang-yeu-thoi-thuong-cuc-hot-167643017042558.jpg").into(view.findViewById(R.id.img6))
+
+        Glide.with(view.context).load("https://giaydantuong.edu.vn/wp-content/uploads/2023/04/anh-gai-dep-lam-avatar-che-mat-1.jpg").into(view.findViewById(R.id.img10))
+        Glide.with(view.context).load("https://thethaodonga.com/wp-content/uploads/2023/05/hinh-anh-qua-bong-da-dep-2.jpg").into(view.findViewById(R.id.img11))
+        Glide.with(view.context).load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP9sS46s10n9BQM_ghd4yYsHULiuxZU6cW7bZVoJyNug&s").into(view.findViewById(R.id.img12))
+
     }
 
 }
