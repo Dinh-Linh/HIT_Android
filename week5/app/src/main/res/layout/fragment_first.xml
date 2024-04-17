@@ -4,14 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#BAD870"
+    android:orientation="vertical"
     tools:context=".FirstFragment">
+    <EditText
+        android:id="@+id/fullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="FullName: "/>
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello"
+        android:text="@string/submit"
         android:textColor="@color/white"
         android:background="#12345a"/>
 

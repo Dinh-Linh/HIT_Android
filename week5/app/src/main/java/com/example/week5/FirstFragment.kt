@@ -13,6 +13,8 @@ import com.example.week5.databinding.FragmentFirstBinding
 class FirstFragment : Fragment() {
 
     private lateinit var binding: FragmentFirstBinding
+    var fullName: String? = null
+    private val mainAc by lazy { activity as MainActivity }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,15 +26,12 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btn.setOnClickListener{
+        binding.btn.setOnClickListener {
             Toast.makeText(requireContext(), "This is toast", Toast.LENGTH_LONG).show()
-            //val intent = Intent(this, SecondFragment::class.java)
-            //startActivity(intent)
+            fullName = binding.fullName.text.toString()
+            //val name = mainAc.fName
+            //binding.fullName.setText(name)
         }
     }
-
 }
 
-class FragmentFirstBinding {
-
-}

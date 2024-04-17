@@ -9,5 +9,6 @@ fun main(args: Array<String>) {
         //add ptu vào list
         l.add(input)
         println("List: "+ l)
+
     }
 }

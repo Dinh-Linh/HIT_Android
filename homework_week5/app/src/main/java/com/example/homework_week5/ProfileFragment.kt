@@ -43,5 +43,4 @@ class ProfileFragment : Fragment() {
         Glide.with(view.context).load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP9sS46s10n9BQM_ghd4yYsHULiuxZU6cW7bZVoJyNug&s").into(view.findViewById(R.id.img12))
 
     }
-
 }

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">week_test</string>
+    <string name="take_note">Take note</string>
+    <string name="favourite">Favourite</string>
+    <string name="add_note">Add Note</string>
+    <string name="main_screen">Main Screen</string>
+    <string name="content">Content</string>
+    <string name="tiltle">Tiltle</string>
+    <string name="save_note">Save Note</string>
+    <string name="add_note_screen">Add Note Sceen</string>
+    <string name="du_l_ch_c_n_chu_n_b_nh_ng_g">Du lịch cần chuẩn bị những gì?</string>
+    <string name="write_content_you_want_note">Write content you want note...</string>
+</resources>
