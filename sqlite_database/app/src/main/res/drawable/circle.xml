@@ -4,5 +4,8 @@
     <corners android:radius="300dp"/>
     <solid android:color="@color/purple"/>
     <stroke android:color="@color/black" android:width="2dp"/>
-
+    <gradient android:startColor="@color/green"
+        android:endColor="@color/yellow"
+        android:centerColor="@color/purple"
+        android:angle="135"/>
 </shape>

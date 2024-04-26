@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">week8</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+    <string name="add_note">Add note</string>
+    <string name="show_note">Show note</string>
+</resources>

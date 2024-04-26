@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.widget.Toast
 
 data class Podcast(
     val id: Int,
@@ -34,11 +35,19 @@ class MyDatabaseHelper(context: Context) :
     //Tạo bảng database
     override fun onCreate(db: SQLiteDatabase?) {
         val CREATE_TABLE =
-            ("CREATE TABLE" + TABLE_NAME + '(' +
+            ("CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_NAME + "TEXT, " + COLUMN_DURATION + "TEXT, " +
                     COLUMN_IMAGE + "TEXT, " + COLUMN_AUTHOR + "TEXT, " +
                     COLUMN_GENRE + "TEXT, )")
+        /* val CREATE_TABLE =
+             "CREATE TABLE $TABLE_NAME (" +
+                     "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                     "$COLUMN_NAME TEXT, " +
+                     "$COLUMN_DURATION TEXT, " +
+                     "$COLUMN_IMAGE TEXT, " +
+                     "$COLUMN_AUTHOR TEXT, " +
+                     "$COLUMN_GENRE TEXT)"*/
         db?.execSQL(CREATE_TABLE)
     }
 
@@ -50,16 +59,26 @@ class MyDatabaseHelper(context: Context) :
     }
 
     fun addPodcast(podcast: Podcast) {
-        val database = this.writableDatabase
-        val values = ContentValues().apply {
-            put(COLUMN_NAME, podcast.name)
-            put(COLUMN_AUTHOR, podcast.author)
-            put(COLUMN_DURATION, podcast.duration)
-            put(COLUMN_GENRE, podcast.genre)
-            put(COLUMN_IMAGE, podcast.image)
+        try {
+            val database = this.writableDatabase
+            val values = ContentValues().apply {
+                put(COLUMN_NAME, podcast.name)
+                put(COLUMN_AUTHOR, podcast.author)
+                put(COLUMN_DURATION, podcast.duration)
+                put(COLUMN_GENRE, podcast.genre)
+                put(COLUMN_IMAGE, podcast.image)
+            }
+            val results: Long = database.insert(TABLE_NAME, null, values)
+            if (results.toInt() == -1) {
+                println("Add failed")
+            } else {
+                println("Add successful")
+            }
+            database.close()
+        } catch (e: Exception) {
+            println("Error adding podcast: ${e.message}")
+            e.printStackTrace()
         }
-        database.insert(TABLE_NAME, null, values)
-        database.close()
     }
 
 
@@ -124,5 +143,29 @@ class MyDatabaseHelper(context: Context) :
         val db = this.writableDatabase
         db.delete(TABLE_NAME, "$COLUMN_ID =?", arrayOf(id.toString()))
         db.close()
+    }
+
+    @SuppressLint("Range")
+    fun getAllPodcast(): MutableList<Podcast> {
+        val listPodcast = mutableListOf<Podcast>()
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME", null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                do {
+                    val podcast = Podcast(
+                        it.getInt(it.getColumnIndex(COLUMN_ID)),
+                        it.getString(it.getColumnIndex(COLUMN_NAME)),
+                        it.getString(it.getColumnIndex(COLUMN_DURATION)),
+                        it.getString(it.getColumnIndex(COLUMN_AUTHOR)),
+                        it.getString(it.getColumnIndex(COLUMN_IMAGE)),
+                        it.getString(it.getColumnIndex(COLUMN_GENRE))
+                    )
+                    listPodcast.add(podcast)
+                } while (it.moveToNext())
+            }
+        }
+        cursor?.close()
+        return listPodcast
     }
 }

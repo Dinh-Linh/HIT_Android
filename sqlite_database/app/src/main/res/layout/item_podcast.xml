@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/podcastContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/image_item"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="20dp"
+        android:src="@color/purple"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/id_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="id"/>
+        <TextView
+            android:id="@+id/name_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="NamePodcast"/>
+        <TextView
+            android:id="@+id/author_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Author"/>
+
+        <TextView
+            android:id="@+id/gerne_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="gerne"/>
+        <TextView
+            android:id="@+id/duration_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="duration"/>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_delete_forever_24"/>
+
+
+</LinearLayout>
