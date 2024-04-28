@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">homework_week8</string>
+    <string name="tiltle">title\n</string>
+    <string name="title">Title</string>
+    <string name="du_l_ch_c_n_chu_n_b_nh_ng_g">Nhập chủ đề ghi chú</string>
+    <string name="content">Content</string>
+    <string name="write_content_you_want_note">Nhập nội dung ghi chú</string>
+    <string name="save_note">Save note</string>
+    <string name="add_note">Add note</string>
+    <string name="take_note">Take note</string>
+    <string name="favourite">Favourite</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
