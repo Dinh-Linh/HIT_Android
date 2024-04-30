@@ -1,5 +1,6 @@
 package com.example.homework_week8
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -15,5 +16,5 @@ interface NoteDao {
     fun deleteNote(note: Note)
 
     @Query("SELECT * FROM note_table")
-    suspend fun getAllNote() : List<Note>
+    fun getAllNote(): LiveData<List<Note>>
 }

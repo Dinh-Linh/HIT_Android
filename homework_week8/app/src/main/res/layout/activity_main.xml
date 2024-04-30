@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -59,22 +60,38 @@
                 android:textStyle="bold" />
 
             <View
+                android:id="@+id/color1"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/black" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/favourite"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/favourite"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/favourite"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Favourite"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/color2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/lightBlack" />
+        </LinearLayout>
 
     </LinearLayout>
 

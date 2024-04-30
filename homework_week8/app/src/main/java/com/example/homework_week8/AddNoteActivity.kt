@@ -1,7 +1,9 @@
 package com.example.homework_week8
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.homework_week8.databinding.ActivityAddNoteBinding
 import com.example.week8.NoteRoomDatabase
 import kotlinx.coroutines.CoroutineScope
@@ -20,14 +22,21 @@ class AddNoteActivity : AppCompatActivity() {
         }
 
         bindingAddNote.saveNote.setOnClickListener {
-            val note = Note(
-                title = bindingAddNote.getTiltle.text.toString(),
-                content = bindingAddNote.getContent.text.toString()
+            addNote(
+                note = Note(
+                    title = bindingAddNote.getTiltle.text.toString(),
+                    content = bindingAddNote.getContent.text.toString(),
+                    like = true
+                )
             )
-            CoroutineScope(Dispatchers.IO).launch {
-                noteRoomDatabase.noteDao().addNote(note)
-//                println(noteRoomDatabase.noteDao().getAllNote())
-            }
+            finish()
+        }
+    }
+
+    fun addNote(note: Note) {
+        CoroutineScope(Dispatchers.IO).launch {
+            noteRoomDatabase.noteDao().addNote(note)
+            //println(noteRoomDatabase.noteDao().getAllNote())
         }
     }
 }

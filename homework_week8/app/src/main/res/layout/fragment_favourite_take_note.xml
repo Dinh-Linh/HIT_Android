@@ -7,16 +7,15 @@
     tools:context=".FavouriteTakeNoteFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fmFavourite"
+        android:id="@+id/recyclerFavourite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_take_note"
         tools:itemCount="2">
 
     </androidx.recyclerview.widget.RecyclerView>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This is favourite note fragment"/>
+
+
+
 
 </LinearLayout>

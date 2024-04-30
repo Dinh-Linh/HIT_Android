@@ -3,6 +3,7 @@ package com.example.homework_week8
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity(tableName = "note_table")
 data class Note(
@@ -11,5 +12,7 @@ data class Note(
     @ColumnInfo("title")
     val title: String,
     @ColumnInfo("content")
-    val content: String
+    val content: String,
+    @ColumnInfo("like")
+    var like: Boolean
 )
