@@ -35,16 +35,30 @@ class NoteAdapter(var listNote: List<Note>) :
         holder.favourite.setOnClickListener {
             val clickedNote = listNote[position]
             val noteRoomDatabase = NoteRoomDatabase.getDatabase(it.context)
-            holder.favourite.setImageResource(R.drawable.heart_red)
+            clickedNote.like = !clickedNote.like
+            //holder.favourite.setImageResource(R.drawable.heart_red)
+            if (listNote[position].like){
+                holder.favourite.setImageResource(R.drawable.heart_red)
+            }
+            else{
+                holder.favourite.setImageResource(R.drawable.heart)
+            }
             val noteDao = noteRoomDatabase.noteDao()
             CoroutineScope(Dispatchers.IO).launch {
-                // Thực hiện cập nhật trạng thái yêu thích của ghi chú
-                clickedNote.like = !clickedNote.like
+                noteRoomDatabase.noteDao().updateNote(
+                    Note(
+                        id = null,
+                        title = listNote[position].title,
+                        content = listNote[position].content,
+                        like = listNote[position].like
+                    )
+                )
             }
             noteDao.getAllNote().observeForever { updateNote ->
                 setData(updateNote)
             }
         }
+
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -52,4 +66,5 @@ class NoteAdapter(var listNote: List<Note>) :
         this.listNote = note
         notifyDataSetChanged()
     }
+
 }

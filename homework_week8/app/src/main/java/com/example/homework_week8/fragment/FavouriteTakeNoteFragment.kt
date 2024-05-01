@@ -12,6 +12,7 @@ import com.example.homework_week8.databinding.FragmentFavouriteTakeNoteBinding
 class FavouriteTakeNoteFragment : Fragment() {
     private val bindingFm by lazy { FragmentFavouriteTakeNoteBinding.inflate(layoutInflater) }
     private lateinit var noteAdapter: NoteAdapter
+    private val fmTakeNote by lazy { TakeNoteFragment ::class.java }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +20,7 @@ class FavouriteTakeNoteFragment : Fragment() {
         reFavourite.layoutManager = LinearLayoutManager(requireContext())
         noteAdapter = NoteAdapter(emptyList())
         reFavourite.adapter = noteAdapter
+
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,5 +28,7 @@ class FavouriteTakeNoteFragment : Fragment() {
     ): View {
         return bindingFm.root
     }
+
+
 
 }
