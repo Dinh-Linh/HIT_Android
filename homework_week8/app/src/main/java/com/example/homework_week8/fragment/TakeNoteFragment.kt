@@ -11,11 +11,13 @@ import com.example.homework_week8.NoteAdapter
 import com.example.homework_week8.databinding.FragmentTakeNoteBinding
 import com.example.homework_week8.database.NoteRoomDatabase
 import com.example.homework_week8.activity.AddNoteActivity
+import com.example.homework_week8.database.Note
 
 class TakeNoteFragment : Fragment() {
     private val bindingFm by lazy { FragmentTakeNoteBinding.inflate(layoutInflater) }
-    private lateinit var noteAdapter: NoteAdapter
     private lateinit var addNote: AddNoteActivity
+    val note = mutableListOf<Note>()
+    private val noteAdapter = NoteAdapter(note)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +32,7 @@ class TakeNoteFragment : Fragment() {
 
         val noteRecyclerView = bindingFm.recyclerViewTakeNote
         noteRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        noteAdapter = NoteAdapter(emptyList()) // Khởi tạo adapter với danh sách rỗng ban đầu
+        //noteAdapter = NoteAdapter(emptyList()) // Khởi tạo adapter với danh sách rỗng ban đầu
         noteRecyclerView.adapter = noteAdapter
 
         val noteRoomDatabase = NoteRoomDatabase.getDatabase(requireContext())
@@ -42,6 +44,5 @@ class TakeNoteFragment : Fragment() {
         noteDao.getAllNote().observe(viewLifecycleOwner) { notes ->
             noteAdapter.setData(notes)
         }
-
     }
 }

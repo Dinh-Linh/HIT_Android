@@ -36,7 +36,6 @@ class NoteAdapter(var listNote: List<Note>) :
             val clickedNote = listNote[position]
             val noteRoomDatabase = NoteRoomDatabase.getDatabase(it.context)
             clickedNote.like = !clickedNote.like
-            //holder.favourite.setImageResource(R.drawable.heart_red)
             if (listNote[position].like){
                 holder.favourite.setImageResource(R.drawable.heart_red)
             }
@@ -47,10 +46,10 @@ class NoteAdapter(var listNote: List<Note>) :
             CoroutineScope(Dispatchers.IO).launch {
                 noteRoomDatabase.noteDao().updateNote(
                     Note(
-                        id = null,
-                        title = listNote[position].title,
-                        content = listNote[position].content,
-                        like = listNote[position].like
+                        id = clickedNote.id,
+                        title = clickedNote.title,
+                        content = clickedNote.content,
+                        like = clickedNote.like
                     )
                 )
             }

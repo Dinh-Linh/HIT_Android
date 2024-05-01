@@ -25,7 +25,7 @@ class AddNoteActivity : AppCompatActivity() {
                 note = Note(
                     title = bindingAddNote.getTiltle.text.toString(),
                     content = bindingAddNote.getContent.text.toString(),
-                    like = true
+                    like = false
                 )
             )
             finish()

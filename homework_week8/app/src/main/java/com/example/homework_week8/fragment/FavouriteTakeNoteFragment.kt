@@ -7,20 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.homework_week8.NoteAdapter
+import com.example.homework_week8.activity.MainActivity
 import com.example.homework_week8.databinding.FragmentFavouriteTakeNoteBinding
 
 class FavouriteTakeNoteFragment : Fragment() {
     private val bindingFm by lazy { FragmentFavouriteTakeNoteBinding.inflate(layoutInflater) }
     private lateinit var noteAdapter: NoteAdapter
-    private val fmTakeNote by lazy { TakeNoteFragment ::class.java }
+    private val mainActivity by lazy { activity as MainActivity}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val reFavourite = bindingFm.recyclerFavourite
-        reFavourite.layoutManager = LinearLayoutManager(requireContext())
-        noteAdapter = NoteAdapter(emptyList())
+        noteAdapter = NoteAdapter(mainActivity.favourite)
         reFavourite.adapter = noteAdapter
-
+        reFavourite.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
