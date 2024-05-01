@@ -1,11 +1,10 @@
-package com.example.homework_week8
+package com.example.homework_week8.activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import com.example.homework_week8.database.Note
 import com.example.homework_week8.databinding.ActivityAddNoteBinding
-import com.example.week8.NoteRoomDatabase
+import com.example.homework_week8.database.NoteRoomDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

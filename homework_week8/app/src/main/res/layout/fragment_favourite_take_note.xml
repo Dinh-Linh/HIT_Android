@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FavouriteTakeNoteFragment">
+    tools:context=".fragment.FavouriteTakeNoteFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerFavourite"

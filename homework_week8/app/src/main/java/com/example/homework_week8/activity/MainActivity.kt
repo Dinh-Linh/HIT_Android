@@ -1,4 +1,4 @@
-package com.example.homework_week8
+package com.example.homework_week8.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.commit
+import com.example.homework_week8.fragment.FavouriteTakeNoteFragment
+import com.example.homework_week8.R
+import com.example.homework_week8.fragment.TakeNoteFragment
 import com.example.homework_week8.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

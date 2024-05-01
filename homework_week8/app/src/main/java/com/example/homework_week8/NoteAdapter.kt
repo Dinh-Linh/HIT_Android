@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.week8.NoteRoomDatabase
+import com.example.homework_week8.database.Note
+import com.example.homework_week8.database.NoteRoomDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,15 +34,15 @@ class NoteAdapter(var listNote: List<Note>) :
         holder.content.text = listNote[position].content
         holder.favourite.setOnClickListener {
             val clickedNote = listNote[position]
-            val noteRoomDatabase = NoteRoomDatabase.getDatabase(holder.itemView.context)
-            holder.favourite.setImageResource(R.color.red)
+            val noteRoomDatabase = NoteRoomDatabase.getDatabase(it.context)
+            holder.favourite.setImageResource(R.drawable.heart_red)
             val noteDao = noteRoomDatabase.noteDao()
             CoroutineScope(Dispatchers.IO).launch {
                 // Thực hiện cập nhật trạng thái yêu thích của ghi chú
                 clickedNote.like = !clickedNote.like
-                noteDao.getAllNote().observeForever { updateNote ->
-                    setData(updateNote)
-                }
+            }
+            noteDao.getAllNote().observeForever { updateNote ->
+                setData(updateNote)
             }
         }
     }

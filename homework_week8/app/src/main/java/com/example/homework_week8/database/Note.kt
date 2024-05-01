@@ -1,4 +1,4 @@
-package com.example.homework_week8
+package com.example.homework_week8.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

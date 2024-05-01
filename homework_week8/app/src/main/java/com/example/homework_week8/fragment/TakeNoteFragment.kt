@@ -1,4 +1,4 @@
-package com.example.homework_week8
+package com.example.homework_week8.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -7,12 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.homework_week8.NoteAdapter
 import com.example.homework_week8.databinding.FragmentTakeNoteBinding
-import com.example.week8.NoteRoomDatabase
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.example.homework_week8.AddNoteActivity
+import com.example.homework_week8.database.NoteRoomDatabase
+import com.example.homework_week8.activity.AddNoteActivity
 
 class TakeNoteFragment : Fragment() {
     private val bindingFm by lazy { FragmentTakeNoteBinding.inflate(layoutInflater) }
