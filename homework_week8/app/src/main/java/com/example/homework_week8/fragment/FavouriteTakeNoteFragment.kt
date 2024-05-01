@@ -29,6 +29,4 @@ class FavouriteTakeNoteFragment : Fragment() {
         return bindingFm.root
     }
 
-
-
 }
