@@ -16,7 +16,7 @@ import com.example.homework_week8.database.Note
 class TakeNoteFragment : Fragment() {
     private val bindingFm by lazy { FragmentTakeNoteBinding.inflate(layoutInflater) }
     private lateinit var addNote: AddNoteActivity
-    val note = mutableListOf<Note>()
+    var note = mutableListOf<Note>()
     private val noteAdapter = NoteAdapter(note)
 
     override fun onCreateView(
@@ -43,6 +43,7 @@ class TakeNoteFragment : Fragment() {
 //        }
         noteDao.getAllNote().observe(viewLifecycleOwner) { notes ->
             noteAdapter.setData(notes)
+            note = notes.toMutableList()
         }
     }
 }

@@ -29,4 +29,8 @@ class FavouriteTakeNoteFragment : Fragment() {
         return bindingFm.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        noteAdapter.setData(mainActivity.favourite)
+    }
 }

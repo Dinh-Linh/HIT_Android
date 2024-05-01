@@ -32,6 +32,12 @@ class NoteAdapter(var listNote: List<Note>) :
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.title.text = listNote[position].title
         holder.content.text = listNote[position].content
+        if (listNote[position].like){
+            holder.favourite.setImageResource(R.drawable.heart_red)
+        }
+        else{
+            holder.favourite.setImageResource(R.drawable.heart)
+        }
         holder.favourite.setOnClickListener {
             val clickedNote = listNote[position]
             val noteRoomDatabase = NoteRoomDatabase.getDatabase(it.context)
