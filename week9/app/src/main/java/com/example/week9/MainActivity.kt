@@ -73,23 +73,23 @@ class MainActivity : AppCompatActivity() {
             })
         }
 
-        binding.create.setOnClickListener{
+        binding.create.setOnClickListener {
             val student = Student(
                 name = "Haha",
                 age = 18,
                 address = "Khong bic"
             )
-            apiStudent.createStudent(student).enqueue(object :Callback<Student>{
+            apiStudent.createStudent(student).enqueue(object : Callback<Student> {
                 override fun onResponse(call: Call<Student>, response: Response<Student>) {
-                    if (response.isSuccessful){
-                        Toast.makeText(this@MainActivity, "Add successful", Toast.LENGTH_LONG).show()
+                    if (response.isSuccessful) {
+                        Toast.makeText(this@MainActivity, "Add successful", Toast.LENGTH_LONG)
+                            .show()
                     }
                 }
 
                 override fun onFailure(call: Call<Student>, t: Throwable) {
 
                 }
-
             })
         }
     }
