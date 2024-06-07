@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.week12_mvvm.R
 import com.example.week12_mvvm.data.Note
 
-class NoteAdapter(var listNote: List<Note>) :
+class NoteAdapter:
     RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+        private var listNote = mutableListOf<Note>()
     class NoteViewHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title = itemView.findViewById<TextView>(R.id.title)
         val content = itemView.findViewById<TextView>(R.id.content)
@@ -32,7 +33,7 @@ class NoteAdapter(var listNote: List<Note>) :
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(note: List<Note>) {
+    fun setData(note: MutableList<Note>) {
         this.listNote = note
         notifyDataSetChanged()
     }

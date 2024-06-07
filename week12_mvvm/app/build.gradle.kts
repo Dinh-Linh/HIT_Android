@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-kapt")
 }
 
 android {
@@ -33,7 +34,8 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures{
+
+    buildFeatures {
         viewBinding = true
     }
 }
@@ -47,4 +49,26 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    // https://mvnrepository.com/artifact/androidx.navigation/navigation-fragment-ktx
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    // https://mvnrepository.com/artifact/androidx.navigation/navigation-ui-ktx
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+
+    // https://mvnrepository.com/artifact/android.arch.lifecycle/viewmodel
+    implementation("android.arch.lifecycle:viewmodel:1.1.1")
+
+    // https://mvnrepository.com/artifact/androidx.room/room-runtime
+    implementation("androidx.room:room-runtime:2.6.1")
+
+    implementation ("androidx.room:room-ktx:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+    androidTestImplementation ("androidx.room:room-testing:2.6.1")
+
+
+
+
+
+
 }
+
