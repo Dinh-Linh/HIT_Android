@@ -24,6 +24,7 @@ class TakeNoteFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.refresh()
     }
 
     override fun onCreateView(
@@ -37,7 +38,9 @@ class TakeNoteFragment : Fragment() {
         bindingFm.addNote.setOnClickListener {
             findNavController().navigate(R.id.action_takeNoteFragment_to_addNoteFragment2)
         }
-        viewModel.getData()
+        viewModel.noteList.observe(viewLifecycleOwner){list ->
+            noteAdapter.setData(list.toMutableList())
+        }
         bindingFm.recyclerViewTakeNote.layoutManager = LinearLayoutManager(requireContext())
         bindingFm.recyclerViewTakeNote.adapter = noteAdapter
         viewModel.noteList.observe(viewLifecycleOwner) {list ->

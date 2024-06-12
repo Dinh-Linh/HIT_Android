@@ -3,7 +3,15 @@ package com.example.week12_mvvm
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.week12_mvvm.data.Note
+import com.example.week12_mvvm.data.NoteRepository
+import com.example.week12_mvvm.data.local.NoteRoomDatabase
+import com.example.week12_mvvm.data.remote.NetworkNoteDataSource
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.Date
 
 class ListViewModel :ViewModel() {
@@ -16,38 +24,15 @@ class ListViewModel :ViewModel() {
         }
     }*/
 
-    private val _noteList = MutableLiveData<List<Note>>()
-    val noteList : LiveData<List<Note>> get() = _noteList
-    fun getData(){
-        _noteList.value = fakeData
-    }
-    private val fakeData = mutableListOf<Note>(
-        Note(
-            title = "Title 1",
-            date = Date(),
-            content = "Content 1",
-        ),
-        Note(
-            title = "Title 2",
-            date = Date(),
-            content = "Content 2",
-        ),
-        Note(
-            title = "Title 3",
-            date = Date(),
-            content = "Content 3",
-        ),
-        Note(
-            title = "Title 4",
-            date = Date(),
-            content = "Content 6",
-        ),
-        Note(
-            title = "Title 5",
-            date = Date(),
-            content = "Content 5",
-        )
-
+    private val repository = NoteRepository(
+        NoteRoomDatabase.getDatabase(MyApplication.getContext()).noteDao(),
+        NetworkNoteDataSource()
     )
+    val noteList : LiveData<List<Note>> = repository.getAll()
 
+    fun refresh(){
+        viewModelScope.launch {
+            repository.refresh()
+        }
+    }
 }
