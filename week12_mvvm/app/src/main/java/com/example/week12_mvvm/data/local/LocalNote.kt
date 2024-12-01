@@ -1,9 +1,8 @@
 package com.example.week12_mvvm.data.local
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.week12_mvvm.data.Note
+import com.example.week12_mvvm.data.data_class.Note
 import java.util.Date
 
 @Entity(tableName = "note")
@@ -16,7 +15,7 @@ data class LocalNote(
 
 )
 
-fun LocalNote.toNote() : Note{
+fun LocalNote.toNote() : Note {
     return Note(
         id = id,
         title = title!!,

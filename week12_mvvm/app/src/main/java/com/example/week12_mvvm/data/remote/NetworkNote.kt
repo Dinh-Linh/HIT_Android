@@ -1,7 +1,6 @@
 package com.example.week12_mvvm.data.remote
 
-import com.example.week12_mvvm.data.Note
-import com.example.week12_mvvm.data.local.LocalNote
+import com.example.week12_mvvm.data.data_class.Note
 import java.util.Date
 
 data class NetworkNote(

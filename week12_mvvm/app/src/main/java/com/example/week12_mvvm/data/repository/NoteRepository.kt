@@ -1,7 +1,8 @@
-package com.example.week12_mvvm.data
+package com.example.week12_mvvm.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
+import com.example.week12_mvvm.data.data_class.Note
 import com.example.week12_mvvm.data.local.LocalNote
 import com.example.week12_mvvm.data.local.NoteDao
 import com.example.week12_mvvm.data.local.toListNote

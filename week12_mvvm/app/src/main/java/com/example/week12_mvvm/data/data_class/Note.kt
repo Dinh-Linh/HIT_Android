@@ -1,4 +1,4 @@
-package com.example.week12_mvvm.data
+package com.example.week12_mvvm.data.data_class
 
 import java.util.Date
 

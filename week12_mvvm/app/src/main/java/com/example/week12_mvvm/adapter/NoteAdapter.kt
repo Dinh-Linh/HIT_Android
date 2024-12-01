@@ -1,4 +1,4 @@
-package com.example.homework_week8
+package com.example.week12_mvvm.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,15 +7,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.week12_mvvm.R
-import com.example.week12_mvvm.data.Note
+import com.example.week12_mvvm.data.data_class.Note
 
-class NoteAdapter:
+class NoteAdapter(private val onClickItem: (Note) -> Unit = {}) :
     RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
-        private var listNote = mutableListOf<Note>()
-    class NoteViewHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.findViewById<TextView>(R.id.title)
-        val content = itemView.findViewById<TextView>(R.id.content)
-        val date = itemView.findViewById<TextView>(R.id.date)
+    private var listNote = mutableListOf<Note>()
+    var onClick: ((Note) -> Unit)? = null
+
+    class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val title: TextView = itemView.findViewById(R.id.title)
+        val content: TextView = itemView.findViewById(R.id.content)
+        val date: TextView = itemView.findViewById(R.id.date)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -27,9 +29,14 @@ class NoteAdapter:
     override fun getItemCount(): Int = listNote.size
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        holder.title.text = listNote[position].title
-        holder.content.text = listNote[position].content
-        holder.date.text = listNote[position].date.toString()
+        with(holder) {
+            title.text = listNote[position].title
+            content.text = listNote[position].content
+            date.text = listNote[position].date.toString()
+            itemView.setOnClickListener {
+                onClickItem(listNote[position])
+            }
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")

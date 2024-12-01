@@ -3,6 +3,7 @@ package com.example.week8
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.week8.databinding.ActivityMainBinding
+import com.example.week8.roomDatabase.AccountRoomDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -11,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val noteRoomDatabase by lazy { NoteRoomDatabase.getDatabase(this) }
+    private val accountRoomDatabase by lazy { AccountRoomDatabase.getDatabase(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
             // Bất đồng bộ. Không chạy được trực tiếp trên main -> Tạo 1 nhánh mới de chay code
             CoroutineScope(Dispatchers.IO).launch {
                 noteRoomDatabase.noteDao().addNode(note)
+                accountRoomDatabase.getDao().createAccount("hello", "world")
             }
         }
         binding.showNote.setOnClickListener {
@@ -34,4 +37,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 }
